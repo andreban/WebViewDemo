@@ -23,7 +23,7 @@ public class MyInputStream extends InputStream
     {
         try
         {
-            if(mContentPath != null && !mContentPath.contains("ttf"))
+            if(mContentPath != null)
             {
                 Thread.sleep(2000);
             }
@@ -32,7 +32,7 @@ public class MyInputStream extends InputStream
         {
             e.printStackTrace();
         }
-        Log.d(TAG, "read: " + this.mContentPath);
+        Log.d(TAG, "Thread id: "+ Thread.currentThread().getId() +" read: " + this.mContentPath);
         return mInputStream.read();
     }
     
@@ -41,7 +41,7 @@ public class MyInputStream extends InputStream
     {
         try
         {
-            if(mContentPath != null && !mContentPath.contains("ttf"))
+            if(mContentPath != null )
             {
                 Thread.sleep(2000);
             }
@@ -50,7 +50,7 @@ public class MyInputStream extends InputStream
         {
             e.printStackTrace();
         }
-        Log.d(TAG, "    read: " + this.mContentPath);
+        Log.d(TAG, "   Thread id: "+ Thread.currentThread().getId() +" read: " + this.mContentPath);
         return mInputStream.read(b);
     }
     
@@ -59,16 +59,17 @@ public class MyInputStream extends InputStream
     {
         try
         {
-            if(mContentPath != null && !mContentPath.contains("ttf"))
+            if(mContentPath != null )
             {
                 Thread.sleep(2000);
             }
+            Thread.currentThread().getId();
         }
         catch(InterruptedException e)
         {
             e.printStackTrace();
         }
-        Log.d(TAG,"   read: " + this.mContentPath + "  offset: " + off + "   length:" + len);
+        Log.d(TAG,"   Thread id: "+ Thread.currentThread().getId() +" read: " + this.mContentPath + "  offset: " + off + "   length:" + len);
         int result = mInputStream.read(b, off, len);
         return result;
     }
